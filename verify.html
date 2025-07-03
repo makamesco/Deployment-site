@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verify Fork - Makamesco MD</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      background: #28a745;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      background: #218838;
+    }
+
+    a.github-fork {
+      display: inline-block;
+      margin-top: 1rem;
+      background: #24292f;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a.github-fork:hover {
+      background: #1b1f23;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>🛡️ Verify Fork</h2>
+    <p>Please fork the repo before deployment:</p>
+
+    <a class="github-fork" href="https://github.com/mesh-matheka/Makamesco_md/fork" target="_blank">
+      🍴 Fork on GitHub
+    </a>
+
+    <p>After forking, click below to continue to deployment:</p>
+
+    <button class="btn" onclick="verifyAndProceed()">I’ve Forked It</button>
+  </div>
+
+  <script>
+    function verifyAndProceed() {
+      sessionStorage.setItem("verified_fork", "true");
+      window.location.href = "deploy.html";
+    }
+  </script>
+
+</body>
+</html>

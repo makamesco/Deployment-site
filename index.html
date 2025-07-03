@@ -64,6 +64,12 @@
       background: #0056b3;
     }
 
+    .note {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 0.5rem;
+    }
+
     footer {
       text-align: center;
       color: #777;
@@ -71,20 +77,7 @@
       margin-bottom: 1rem;
     }
   </style>
-
   <script>
-    // Manual fork confirmation
-    if (!sessionStorage.getItem("verified_fork")) {
-      const confirmFork = confirm("⚠️ Please confirm you’ve forked this repo:\nhttps://github.com/mesh-matheka/Makamesco_md\n\nClick OK if you already forked. Cancel will redirect you to fork.");
-      if (confirmFork) {
-        sessionStorage.setItem("verified_fork", "true");
-        alert("✅ Fork confirmed. Proceeding to deployment options.");
-      } else {
-        alert("🔁 Redirecting you to fork the repo first.");
-        window.location.href = "https://github.com/mesh-matheka/Makamesco_md/fork";
-      }
-    }
-
     function confirmRepoDeploy(url) {
       const confirmDeploy = confirm("⚠️ Please make sure you've reviewed and starred the GitHub repo before deploying. Continue?");
       if (confirmDeploy) {
@@ -93,7 +86,6 @@
     }
   </script>
 </head>
-
 <body>
 
   <header>
@@ -108,7 +100,7 @@
       <p>Deploy the original Makamesco MD Bot. Make sure to generate a session ID before proceeding.</p>
       <div class="buttons">
         <a href="#" onclick="confirmRepoDeploy('https://heroku.com/deploy?template=https://github.com/mesh-matheka/Makamesco_md')">Deploy on Heroku</a>
-        <a href="https://makamesco-md-code.onrender.com" target="_blank">Generate Session ID</a>
+        <a href="https://makamesco-md-code.onrender.com">Generate Session ID</a>
       </div>
     </section>
 

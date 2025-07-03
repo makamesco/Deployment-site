@@ -69,7 +69,22 @@
       color: #555;
       margin-top: 0.5rem;
     }
+
+    footer {
+      text-align: center;
+      color: #777;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
   </style>
+  <script>
+    function confirmRepoDeploy(url) {
+      const confirmDeploy = confirm("⚠️ Please make sure you've reviewed and starred the GitHub repo before deploying. Continue?");
+      if (confirmDeploy) {
+        window.open(url, "_blank");
+      }
+    }
+  </script>
 </head>
 <body>
 
@@ -82,28 +97,41 @@
     <!-- Deployment 1: makamesco md bot -->
     <section>
       <h2>🚀 Makamesco MD Bot</h2>
-      <p>Deploy the original Makamesco MD Bot using the following platforms. Generate a session ID before deployment.</p>
+      <p>Deploy the original Makamesco MD Bot. Make sure to generate a session ID before proceeding.</p>
       <div class="buttons">
-        <a href="https://heroku.com/deploy?template=https://github.com/mesh-matheka/Makamesco_md">Deploy on Heroku</a>
+        <a href="#" onclick="confirmRepoDeploy('https://heroku.com/deploy?template=https://github.com/mesh-matheka/Makamesco_md')">Deploy on Heroku</a>
         <a href="https://makamesco-md-code.onrender.com">Generate Session ID</a>
       </div>
     </section>
 
     <!-- Deployment 2: makamesco-md-v -->
     <section>
-      <h2>🔥 Makamesco MD-V Bot</h2>
-      <p>Deploy the advanced version of Makamesco MD-V Bot on your preferred platform. Session ID is inserted in session.json in the zip  so mostly its for panels if you want heroku edit session.json put your session "session-id" and its required.</p>
+      <h2>🔥 Makamesco MD-V Bot (Panel & Cloud)</h2>
+      <p>Advanced version for panels and clouds. Edit <code>session.json</code> with your session. Deployment checks repo before launching.</p>
       <div class="buttons">
-        <a href="https://heroku.com/deploy?template=https://github.com/makamesco/Makamesco-md-v">Heroku</a>
-        <a href="https://render.com/deploy?template=https://github.com/your-md-v-render">Render</a>
-        <a href="https://koyeb.com/deploy?template=https://github.com/your-md-v-koyeb">Koyeb</a>
+        <a href="#" onclick="confirmRepoDeploy('https://heroku.com/deploy?template=https://github.com/makamesco/Makamesco-md-v')">Heroku</a>
+        <a href="#" onclick="confirmRepoDeploy('https://render.com/deploy?template=https://github.com/your-md-v-render')">Render</a>
+        <a href="#" onclick="confirmRepoDeploy('https://koyeb.com/deploy?template=https://github.com/your-md-v-koyeb')">Koyeb</a>
         <a href="https://your-panel-url.com">Panel</a>
         <a href="https://your-session-generator.com">Generate Session ID</a>
         <a href="https://github.com/makamesco/Makamesco-md-v/archive/refs/heads/main.zip">Download ZIP</a>
       </div>
     </section>
 
+    <!-- Deployment 3: sexy-md -->
+    <section>
+      <h2>🔞 SEXY-MD Bot</h2>
+      <p><em>Stay horny 😈</em> — This bot is zipped only and ready for local or panel hosting.</p>
+      <div class="buttons">
+        <a href="https://github.com/makamesco/SEXY-MD/archive/refs/heads/main.zip">Download ZIP</a>
+      </div>
+    </section>
+
   </main>
 
+  <footer>
+    &copy; 2025 Makamesco Deployments. All rights reserved.
+  </footer>
+
 </body>
-          </html>
+</html>

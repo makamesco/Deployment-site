@@ -3,135 +3,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Makamesco Bot Deployments</title>
+  <title>Fork Verification – Makamesco Panel</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #f7f9fb;
+      background: #f0f4f8;
       margin: 0;
-      padding: 0;
-      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
 
-    header {
-      background: #222;
-      color: #fff;
-      padding: 1rem;
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      padding: 2rem;
       text-align: center;
+      max-width: 500px;
     }
 
     h1 {
-      margin: 0;
       font-size: 1.8rem;
+      margin-bottom: 0.5rem;
     }
 
-    main {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    section {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    h2 {
-      margin-top: 0;
-      color: #222;
+    p {
+      color: #555;
     }
 
     .buttons {
+      margin-top: 1.5rem;
       display: flex;
-      flex-wrap: wrap;
       gap: 1rem;
-      margin-top: 1rem;
+      justify-content: center;
     }
 
-    .buttons a {
-      text-decoration: none;
+    .btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      background: #28a745;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #218838;
+    }
+
+    .btn-secondary {
       background: #007BFF;
-      color: white;
-      padding: 0.75rem 1.2rem;
-      border-radius: 8px;
-      transition: background 0.3s ease;
+      color: #fff;
     }
 
-    .buttons a:hover {
+    .btn-secondary:hover {
       background: #0056b3;
     }
 
-    .note {
-      font-size: 0.9rem;
-      color: #555;
-      margin-top: 0.5rem;
-    }
-
-    footer {
-      text-align: center;
-      color: #777;
-      font-size: 0.8rem;
-      margin-bottom: 1rem;
+    .footer-note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #888;
     }
   </style>
-  <script>
-    function confirmRepoDeploy(url) {
-      const confirmDeploy = confirm("⚠️ Please make sure you've reviewed and starred the GitHub repo before deploying. Continue?");
-      if (confirmDeploy) {
-        window.open(url, "_blank");
-      }
-    }
-  </script>
 </head>
 <body>
 
-  <header>
-    <h1>Makamesco Bot Deployment Center</h1>
-  </header>
+  <div class="card">
+    <h1>🔒 Fork Required</h1>
+    <p>To use this deployment panel, you must first fork the GitHub repo:</p>
+    <p><strong>Makamesco MD</strong></p>
 
-  <main>
+    <div class="buttons">
+      <button class="btn btn-primary" onclick="confirmFork()">✅ I’ve Forked</button>
+      <button class="btn btn-secondary" onclick="goToFork()">🔁 Fork Now</button>
+    </div>
 
-    <!-- Deployment 1: makamesco md bot -->
-    <section>
-      <h2>🚀 Makamesco MD Bot</h2>
-      <p>Deploy the original Makamesco MD Bot. Make sure to generate a session ID before proceeding.</p>
-      <div class="buttons">
-        <a href="#" onclick="confirmRepoDeploy('https://heroku.com/deploy?template=https://github.com/mesh-matheka/Makamesco_md')">Deploy on Heroku</a>
-        <a href="https://makamesco-md-code.onrender.com">Generate Session ID</a>
-      </div>
-    </section>
+    <div class="footer-note">
+      You’ll only be asked once per session.
+    </div>
+  </div>
 
-    <!-- Deployment 2: makamesco-md-v -->
-    <section>
-      <h2>🔥 Makamesco MD-V Bot (Panel & Cloud)</h2>
-      <p>Advanced version for panels and clouds. Edit <code>session.json</code> with your session. Deployment checks repo before launching.</p>
-      <div class="buttons">
-        <a href="#" onclick="confirmRepoDeploy('https://heroku.com/deploy?template=https://github.com/makamesco/Makamesco-md-v')">Heroku</a>
-        <a href="#" onclick="confirmRepoDeploy('https://render.com/deploy?template=https://github.com/your-md-v-render')">Render</a>
-        <a href="#" onclick="confirmRepoDeploy('https://koyeb.com/deploy?template=https://github.com/your-md-v-koyeb')">Koyeb</a>
-        <a href="https://your-panel-url.com">Panel</a>
-        <a href="https://your-session-generator.com">Generate Session ID</a>
-        <a href="https://github.com/makamesco/Makamesco-md-v/archive/refs/heads/main.zip">Download ZIP</a>
-      </div>
-    </section>
+  <script>
+    // Auto-redirect if already verified
+    if (sessionStorage.getItem("verified_fork") === "true") {
+      window.location.href = "deploy.html";
+    }
 
-    <!-- Deployment 3: sexy-md -->
-    <section>
-      <h2>🔞 SEXY-MD Bot</h2>
-      <p><em>Stay horny 😈</em> — This bot is zipped only and ready for local or panel hosting.</p>
-      <div class="buttons">
-        <a href="https://github.com/makamesco/SEXY-MD/archive/refs/heads/main.zip">Download ZIP</a>
-      </div>
-    </section>
+    function confirmFork() {
+      sessionStorage.setItem("verified_fork", "true");
+      window.location.href = "deploy.html";
+    }
 
-  </main>
-
-  <footer>
-    &copy; 2025 Makamesco Deployments. All rights reserved.
-  </footer>
+    function goToFork() {
+      window.open("https://github.com/mesh-matheka/Makamesco_md/fork", "_blank");
+    }
+  </script>
 
 </body>
 </html>
